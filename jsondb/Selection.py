@@ -18,3 +18,10 @@ class JSONDBSelection(object):
         for row in self._rows:
             self._db.update(row, key, value)
         self._db.save()
+
+    def select(self, expression):
+        indexes = []
+        for row in self._rows:
+            if expression(self[row]):
+                indexes.append(row)
+        return JSONDBSelection(indexes, self._db)
