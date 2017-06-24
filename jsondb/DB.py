@@ -40,6 +40,10 @@ class JSONDB(object):
                 indexes.append(index)
         return JSONDBSelection(indexes, self)
 
+    def insert(self, **kwargs):
+        self._rows.append(kwargs)
+        self.save()
+
     def update_row(self, row_index, key, value):
         self._rows[row_index][key] = value
 

@@ -73,3 +73,11 @@ def test_get_item():
     clean_data()
     db = JSONDB(TEST_DATA_PATH)
     assert db[0]["one"] == 1
+
+
+def test_insert_item():
+    clean_data()
+    db = JSONDB(TEST_DATA_PATH)
+    assert len(db.select(lambda x: x["three"] == 3)) == 1
+    db.insert(three=3)
+    assert len(db.select(lambda x: x["three"] == 3)) == 2
