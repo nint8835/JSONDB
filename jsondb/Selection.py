@@ -1,3 +1,6 @@
+import json
+
+
 class JSONDBSelection(object):
 
     def __init__(self, row_indexes, db):
@@ -13,6 +16,9 @@ class JSONDBSelection(object):
 
     def __len__(self):
         return len(self._rows)
+
+    def __str__(self):
+        return json.dumps(map(self._db.get_row, self._rows))
 
     def update(self, key, value):
         for row in self._rows:

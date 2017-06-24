@@ -81,3 +81,10 @@ def test_insert_item():
     assert len(db.select(lambda x: x["three"] == 3)) == 1
     db.insert(three=3)
     assert len(db.select(lambda x: x["three"] == 3)) == 2
+
+
+def test_dump_json():
+    clean_data()
+    db = JSONDB(TEST_DATA_PATH)
+    assert str(db) == json.dumps(testdata)
+    assert str(db.select(lambda x: True)) == json.dumps(testdata)

@@ -25,6 +25,9 @@ class JSONDB(object):
         for row in self._rows:
             yield row
 
+    def __str__(self):
+        return json.dumps(self._rows)
+
     def save(self):
         with open(self._filename, "w") as f:
             json.dump(self._rows, f)
