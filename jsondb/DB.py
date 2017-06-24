@@ -15,6 +15,16 @@ class JSONDB(object):
         else:
             self.load()
 
+    def __len__(self):
+        return len(self.rows)
+
+    def __getitem__(self, i):
+        return self._rows[i]
+
+    def __iter__(self):
+        for row in self._rows:
+            yield row
+
     def save(self):
         with open(self._filename, "w") as f:
             json.dump(self._rows, f)

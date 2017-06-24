@@ -4,11 +4,6 @@ class JSONDBSelection(object):
         self._db = db
         self._rows = row_indexes
 
-    def update(self, key, value):
-        for row in self._rows:
-            self._db.update(row, key, value)
-        self._db.save()
-
     def __getitem__(self, i):
         return self._db.get_row(self._rows[i])
 
@@ -18,3 +13,8 @@ class JSONDBSelection(object):
 
     def __len__(self):
         return len(self._rows)
+
+    def update(self, key, value):
+        for row in self._rows:
+            self._db.update(row, key, value)
+        self._db.save()
