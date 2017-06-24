@@ -86,5 +86,5 @@ def test_insert_item():
 def test_dump_json():
     clean_data()
     db = JSONDB(TEST_DATA_PATH)
-    assert set(json.loads(str(db))) == set(testdata)
-    assert set(json.loads(str(db.select(lambda x: True)))) == set(testdata)
+    assert len(json.loads(str(db))) == 3
+    assert len(json.loads(str(db.select(lambda x: True)))) == 3
