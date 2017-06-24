@@ -16,7 +16,7 @@ class JSONDB(object):
             self.load()
 
     def __len__(self):
-        return len(self.rows)
+        return len(self._rows)
 
     def __getitem__(self, i):
         return self._rows[i]
@@ -35,7 +35,7 @@ class JSONDB(object):
 
     def select(self, expression):
         indexes = []
-        for row, index in enumerate(self._rows):
+        for index, row in enumerate(self._rows):
             if expression(row):
                 indexes.append(index)
         return JSONDBSelection(indexes, self)

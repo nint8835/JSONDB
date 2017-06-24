@@ -16,7 +16,7 @@ class JSONDBSelection(object):
 
     def update(self, key, value):
         for row in self._rows:
-            self._db.update(row, key, value)
+            self._db.update_row(row, key, value)
         self._db.save()
 
     def select(self, expression):
