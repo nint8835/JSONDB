@@ -18,7 +18,7 @@ class JSONDBSelection(object):
         return len(self._rows)
 
     def __str__(self):
-        return json.dumps(map(self._db.get_row, self._rows))
+        return json.dumps(list(map(self._db.get_row, self._rows)))
 
     def update(self, key, value):
         for row in self._rows:
