@@ -67,3 +67,9 @@ def test_update_rows():
     swapped_row = db.select(lambda x: x["two"] == 3)
     swapped_row.update("two", 2)
     assert len(db.select(lambda x: x["two"] == 2)) == 3
+
+
+def test_get_item():
+    clean_data()
+    db = JSONDB(TEST_DATA_PATH)
+    assert db[0]["one"] == 1
