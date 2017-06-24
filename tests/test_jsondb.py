@@ -3,7 +3,7 @@ import sys
 import json
 
 sys.path.append(os.path.abspath(os.path.join(os.path.abspath(__file__), "..", "..")))
-TEST_PATH = os.path.join(os.path.abspath(__file__), "..")
+TEST_PATH = os.path.abspath(os.path.join(os.path.abspath(__file__), ".."))
 TEST_DATA_PATH = os.path.join(TEST_PATH, "testdata.json")
 
 from jsondb import JSONDB
